@@ -1,4 +1,4 @@
-:HL["/_next/static/chunks/0zssxmpfv15qi.css","style"]
+:HL["/_next/static/chunks/02-28qpv11~9s.css","style"]
 :HL["/_next/static/media/47fe1b7cd6e6ed85-s.p.0~mcdl10zdfb3.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/6aac95a85db691f1-s.p.0qkjcfd5a90c2.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/829ba4228c966254-s.p.0ub.k0om~_-xi.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
@@ -9,4 +9,4 @@
 :HL["/_next/static/media/e8f2fbee2754df70-s.p.0fzkl03jw-sdz.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/edcf447d6990da7e-s.p.0rmnzjlzsvg7u.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/brand/psychotherapie-coaching-individuel.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"consultations","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"sowiTmVfT4Ndolr9I1JsT"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"consultations","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"1mvUfbT8q0DFbW-SDq78C"}
