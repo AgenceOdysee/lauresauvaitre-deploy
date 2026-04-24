@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://lauresauvaitre.com
+Sitemap: https://lauresauvaitre.com/sitemap.xml

@@ -1,0 +1,72 @@
+# Hostinger / Apache — rewrite rules pour Next.js `output: 'export'`
+# Source de vérité : SEO.md §2.1 (plan de migration URL).
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # --- 1. Forcer HTTPS ---
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # --- 2. Forcer l'apex (supprimer www.) ---
+  RewriteCond %{HTTP_HOST} ^www\.lauresauvaitre\.com$ [NC]
+  RewriteRule ^(.*)$ https://lauresauvaitre.com/$1 [R=301,L]
+
+  # --- 3. Redirections 301 spécifiques (migration depuis ancien site OVH) ---
+  # Référence ancien sitemap : https://www.lauresauvaitre.com/page-sitemap.xml
+  #
+  # /formation (singulier, WP) -> /formations (pluriel, nouveau site)
+  RewriteRule ^formation/?$ /formations [R=301,L]
+  # /qui-suis-je -> /a-propos (page À propos refondue)
+  RewriteRule ^qui-suis-je/?$ /a-propos [R=301,L]
+  # /les-je-d-equilibre -> /a-propos (contenu JE d'équilibre intégré à la page À propos)
+  RewriteRule ^les-je-d-equilibre/?$ /a-propos [R=301,L]
+  # /consultations/ et /mentions-legales/ : mêmes slugs, géré par règle trailing-slash §4
+
+  # --- 3bis. Bloquer les chemins WordPress résiduels (sécurité) ---
+  # Le site n'est plus sur WP : aucun de ces chemins ne doit exister.
+  RewriteRule ^wp-admin(/.*)?$ - [R=404,L]
+  RewriteRule ^wp-login\.php$ - [R=404,L]
+  RewriteRule ^xmlrpc\.php$ - [R=404,L]
+  RewriteRule ^feed/?$ - [R=404,L]
+
+  # --- 4. Drop trailing slash (sauf racine) ---
+  RewriteCond %{REQUEST_URI} ^(.+)/$
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+  # --- 5. Servir les fichiers .html générés par `next build` sans extension ---
+  # Ex : /consultations -> /consultations.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+?)/?$ /$1.html [L]
+</IfModule>
+
+# --- Page 404 custom ---
+ErrorDocument 404 /404.html
+
+# --- Compression & cache (perf SEO) ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# --- Sécurité : headers basiques ---
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
