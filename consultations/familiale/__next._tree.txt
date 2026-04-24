@@ -1,4 +1,4 @@
-:HL["/_next/static/chunks/0eb-5x263xhhq.css","style"]
+:HL["/_next/static/chunks/0erett.mb-7h2.css","style"]
 :HL["/_next/static/media/47fe1b7cd6e6ed85-s.p.0~mcdl10zdfb3.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/6aac95a85db691f1-s.p.0qkjcfd5a90c2.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/829ba4228c966254-s.p.0ub.k0om~_-xi.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
@@ -9,4 +9,4 @@
 :HL["/_next/static/media/e8f2fbee2754df70-s.p.0fzkl03jw-sdz.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/edcf447d6990da7e-s.p.0rmnzjlzsvg7u.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/brand/playmobil.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"consultations","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"familiale","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"HzpvQWD_ZBHEINNfHBZxc"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"consultations","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"familiale","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"Y6hHjuYK7j-pzj2DEiaFK"}
