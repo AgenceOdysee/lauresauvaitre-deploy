@@ -1,6 +1,15 @@
 # Hostinger / Apache — rewrite rules pour Next.js `output: 'export'`
 # Source de vérité : SEO.md §2.1 (plan de migration URL).
 
+# Next.js 16 (`output: export`) génère un dossier compagnon RSC (`__next.*.txt`)
+# à côté de chaque `page.html` (ex : `a-propos.html` + dossier `a-propos/`).
+# On empêche Apache d'ajouter automatiquement un slash sur ces dossiers, sinon
+# `/a-propos` -> 301 `/a-propos/` -> 403 (dossier sans index). La règle §5
+# ci-dessous sert le `.html` homonyme en priorité.
+<IfModule mod_dir.c>
+  DirectorySlash Off
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
@@ -37,8 +46,10 @@
 
   # --- 5. Servir les fichiers .html générés par `next build` sans extension ---
   # Ex : /consultations -> /consultations.html
+  # NB : pas de condition `!-d` — un fichier `$1.html` doit primer sur le dossier
+  # compagnon RSC homonyme généré par Next 16 (cf. DirectorySlash Off ci-dessus).
+  # Les vrais fichiers (.txt RSC, assets) restent servis tels quels via `!-f`.
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{DOCUMENT_ROOT}/$1.html -f
   RewriteRule ^(.+?)/?$ /$1.html [L]
 </IfModule>
